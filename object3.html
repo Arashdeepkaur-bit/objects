@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="obj3"></div>
+    <script language="javascript">
+        function obj3(firstname,lastname,age,eyecolor){
+    this.first=firstname,
+    this.last=lastname,
+    this.age=age,
+    this.eye=eyecolor
+}
+const b= new obj3("aman","saini",20,"black");
+document.getElementById("obj3").innerHTML=b.first+" "+
+"is"+" "+ b.age+" "+"years old";   
+</script>
+</body>
+</html>

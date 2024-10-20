@@ -1,0 +1,38 @@
+#div1{
+    border-radius: 5px;
+    background-color: rgb(234, 121, 202);
+    height: 120px;
+    width: 100px;
+    font-size: x-large;
+    margin: 20px;
+}
+#main{
+    text-align: center;
+    display: flex;
+    margin: 200px 0px 0px 350px;
+    
+}
+#div2{
+    border-radius: 5px;
+    background-color: rgb(244, 71, 195);
+    height: 120px;
+    width: 100px;
+    font-size: x-large;
+    margin: 20px;
+}
+#div3{
+    border-radius: 5px;
+    background-color: rgb(158, 35, 123);
+    height: 120px;
+    width: 100px;
+    font-size: x-large;
+    margin: 20px;
+}
+#div4{
+    border-radius: 5px;
+    background-color: rgb(139, 12, 101);
+    height: 120px;
+    width: 100px;
+    font-size: x-large;
+    margin: 20px;
+}
