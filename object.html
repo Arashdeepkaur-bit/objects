@@ -12,35 +12,52 @@
 <div id="div1"></div><br>
 <div id="div2"></div><br>
 <div id="div3"></div><br>
-<div id="div4"></div><br></div>
+ <div id="div5"></div><br>
+</div>
 <script language="javascript">
-function obj(firstname,lastname,age,eyecolor){
-    this.first=firstname,
+let p=[];
+let a={
+    name:"aman",
+    last:"preet",
+    age:"20",
+    eye:"black"};
+    p.push(a)
+ function obj(firstname,lastname,age,eyecolor){
+    this.name=firstname,
     this.last=lastname,
     this.age=age,
     this.eye=eyecolor
 }
-let a= new obj("arash","kaur",21,"brown");
-let b= new obj("aman","saini",20,"black");
-let c=new obj("divya","yadav",23,"blue");
-let x=new obj("abhi","singh",18,"green");
+
+let c= new obj("jashan","saini","21","brown");
+p.push(c)
+const obj2=new Object();
+{
+    obj2.name="arash",
+    obj2.last="kaur",
+    obj2.age="24",
+    obj2.eye="blue"
+}
+p.push(obj2)
+console.log(p);
 let d="";
 let e="";
 let f="";
-let g="";
-    d += a.first+"<br>" + b.last+"<br>"+ c.age+"<br>"+ x.eye+"<br>"
-
-    e += b.first+"<br>"+ c.last+"<br>"+ x.age+"<br>"+ a.eye+"<br>"
-
-    f += c.first+"<br>"+ x.last+"<br>"+ a.age+"<br>"+ b.eye+"<br>"
-
-    g += x.first+"<br>"+ a.last+"<br>"+ b.age+"<br>"+ c.eye+"<br>"
+for(let x=0;x<1;x++){
+d+=p[x].name+"<br>";
+}
+for(let x=1;x<2;x++){
+d+=p[x].last+"<br>";
+}
+for(let x=2;x<3;x++){
+  d+=p[x].age+"<br>";;
+}
+for(let x=0;x<1;x++){
+d+=p[x].eye+"<br>";
+}
+div3.innerHTML=p[2].name+"<br>"+p[0].last+"<br>"+p[1].age+"<br>"+p[2].eye;
 document.getElementById("div1").innerHTML=d;
-document.getElementById("div2").innerHTML=e;
-document.getElementById("div3").innerHTML=f;
-document.getElementById("div4").innerHTML=g;
-
-
+document.getElementById("div2").innerHTML=p[1].name+"<br>"+p[2].last+"<br>"+p[0].age+"<br>"+p[1].eye;
 </script>
 </body>
 </html>
