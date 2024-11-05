@@ -1,0 +1,11 @@
+<script type="text/javascript" src="data.json"></script>
+<script>
+ function arash(){
+    let obj = JSON.parse(data);
+    document.write(JSON.stringify(obj[0]))
+   for(i in obj){
+      document.write("name:"+obj[i].name+"  " +"class : "+obj[i].class+"<br>")
+   }
+ }
+</script>
+<button onclick="arash()"><a href="data2.html">click </a></button>
