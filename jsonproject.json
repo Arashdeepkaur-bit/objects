@@ -1,1 +1,1 @@
-data=
+data = '[{"productId":"4532","productname":"Shoes","image":"1.jpeg","price":12000},{"productId":"4533","productname":"books","image":"11.jpeg","price":1200},{"productId":"4534","productname":"bages","image":"3.jpeg","price":2000},{"productId":"4535","productname":"Bottles","image":"5.jpeg","price":120}]'
