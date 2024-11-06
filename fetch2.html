@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button onclick="arash()">Click</button>
+    <p id="table"></p>
+    <script>
+    function arash() {
+    fetch('https://dummyjson.com/products')
+    .then(res=>res.json())
+    .then(data=>{
+    console.log(data)
+            
+    
+    let r = "<table> <tr><th>ID</th><th>Name</th><th>UserID</th><th>Ingredients</th><th>PrepTimeMinutes</th><th>Review</th><th>Rating</th><th>Image</th>";
+    for (let a in data.products) {
+          r += "<tr>" +
+            "<td>" +"<img src='" + data.products[a].images[0] + "' width=200px height=200px>"+"<img alt='no image' src='" + data.products[a].images[1] +  "' width=200px height=200px>" + "</td>" +
+
+        //   "<td>" + data.recipes[a].id + "</td>" +
+        //   "<td>" + data.recipes[a].name + "</td>" +
+        //   "<td>" + data.recipes[a].userId+ "</td>" +
+        //   "<td>" + data.recipes[a].ingredients+"</td>"+
+        //   "<td>" + data.recipes[a].prepTimeMinutes+ "</td>" +
+        //   "<td>" + data.recipes[a].reviewCount+ "</td>" +
+        //   "<td>" + data.recipes[a].rating + "</td>" +
+        //   "<td>" + data.recipes[a].image + "</td>" +
+
+          "</tr>";
+        }
+        r+= "</table>";
+        document.getElementById("table").innerHTML = r;
+    })
+        
+    }
+</script>
+
+</body>
+</html>

@@ -1,9 +1,13 @@
 table{
-    border:2px solid black; height: 100px; width: 100px;
+    border:2px solid black; height: 100px; width: 100%;text-align: center;
 }
 td{
     border:2px solid black; height: 100px; width: 100px;
 }
 th{
     border:2px solid black; height: 100px; width: 100px;
+}
+img{
+    height: 200px;
+    width: 200px;
 }

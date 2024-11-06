@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button onclick="arash()">Click</button>
+    <p id="table"></p>
+    <script>
+    function arash() {
+    fetch('https://dummyjson.com/recipes')
+    .then(res=>res.json())
+    .then(data=>{
+    console.log(data)
+            
+    
+    let a = "<table> <tr><th>ID</th><th>Name</th><th>UserID</th><th>Ingredients</th><th>PrepTimeMinutes</th><th>Review</th><th>Rating</th><th>Image</th>";
+    for (let x in data.recipes) {
+          a += "<tr>" +
+          "<td>" + data.recipes[x].id + "</td>" +
+          "<td>" + data.recipes[x].name + "</td>" +
+          "<td>" + data.recipes[x].userId+ "</td>" +
+          "<td>" + data.recipes[x].ingredients+"</td>"+
+          "<td>" + data.recipes[x].prepTimeMinutes+ "</td>" +
+          "<td>" + data.recipes[x].reviewCount+ "</td>" +
+          "<td>" + data.recipes[x].rating + "</td>" +
+        "<td><img src='" + data.recipes[x].image + "' alt='Recipe Image' width='50' /><img src='" + data.recipes[x].image[1] + "' alt='Recipe Image' width='50' /></td>" +
+
+          "</tr>";
+        }
+        a += "</table>";
+        document.getElementById("table").innerHTML = a;
+    })
+        
+    }
+</script>
+
+</body>
+</html>
