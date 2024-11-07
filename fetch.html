@@ -1,42 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <button onclick="arash()">Click</button>
+    <div id="arsh"></div>
     <p id="table"></p>
-    <script>
-    function arash() {
-    fetch('https://dummyjson.com/recipes')
-    .then(res=>res.json())
-    .then(data=>{
-    console.log(data)
-            
     
-    let a = "<table> <tr><th>ID</th><th>Name</th><th>UserID</th><th>Ingredients</th><th>PrepTimeMinutes</th><th>Review</th><th>Rating</th><th>Image</th>";
-    for (let x in data.recipes) {
-          a += "<tr>" +
-          "<td>" + data.recipes[x].id + "</td>" +
-          "<td>" + data.recipes[x].name + "</td>" +
-          "<td>" + data.recipes[x].userId+ "</td>" +
-          "<td>" + data.recipes[x].ingredients+"</td>"+
-          "<td>" + data.recipes[x].prepTimeMinutes+ "</td>" +
-          "<td>" + data.recipes[x].reviewCount+ "</td>" +
-          "<td>" + data.recipes[x].rating + "</td>" +
-        "<td><img src='" + data.recipes[x].image + "' alt='Recipe Image' width='50' /><img src='" + data.recipes[x].image[1] + "' alt='Recipe Image' width='50' /></td>" +
-
-          "</tr>";
-        }
-        a += "</table>";
-        document.getElementById("table").innerHTML = a;
-    })
-        
+    <script>
+    let cart = [];
+    function arash() {
+        fetch('https://dummyjson.com/recipes')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            
+            let r = "<table> <tr><th>ID</th><th>Name</th><th>UserID</th><th>Ingredients</th><th>PrepTimeMinutes</th><th>Review</th><th>Rating</th><th>Image</th><th>Add to cart</th></tr>";
+            for (let a in data.recipes) {
+                r += "<tr>" +
+                    "<td>" + data.recipes[a].id + "</td>" +
+                    "<td>" + data.recipes[a].name + "</td>" +
+                    "<td>" + data.recipes[a].userId + "</td>" +
+                    "<td>" + data.recipes[a].ingredients + "</td>" +
+                    "<td>" + data.recipes[a].prepTimeMinutes + "</td>" +
+                    "<td>" + data.recipes[a].reviewCount + "</td>" +
+                    "<td>" + data.recipes[a].rating + "</td>" +
+                    "<td><img src='" + data.recipes[a].image + "' alt='Recipe Image' width='50' /></td>" +
+                    "<td><button onclick='addToCart(" + a + ")'>Add to Cart</button></td>" +
+                    "</tr>";
+            }
+            r += "</table>";
+            document.getElementById("table").innerHTML = r;
+        });
     }
-</script>
+    function addToCart(value) {
+        fetch('https://dummyjson.com/recipes')
+        .then(res => res.json())
+        .then(data => {
+            let p = data.recipes[value];
+            cart.push(p);
+            update();
+        });
+    }
+    function update() {
+        let d = "<table> <tr><th>ID</th><th>Name</th><th>UserID</th><th>Ingredients</th><th>PrepTimeMinutes</th><th>Review</th><th>Rating</th><th>Image</th><th>Remove</th></tr>";
+            
+        for (let x = 0; x < cart.length; x++) {
+            d += "<tr>" +
+                "<td>" + cart[x].id + "</td>" +
+                "<td>" + cart[x].name + "</td>" +
+                "<td>" + cart[x].userId + "</td>" +
+                "<td>" + cart[x].ingredients + "</td>" +
+                "<td>" + cart[x].prepTimeMinutes + "</td>" +
+                "<td>" + cart[x].reviewCount + "</td>" +
+                "<td>" + cart[x].rating + "</td>" +
+                "<td><img src='" + cart[x].image + "' alt='Recipe Image' width='50' /></td>" +
+                "<td><button onclick='remove(" + x + ")'>Remove</button></td>" +
+                "</tr>";
+        }
+        
+        d += "</table>";
+        document.getElementById("arsh").innerHTML = d;
+    }
+    function remove(index) {
+        cart.splice(index, 1);
+        update();
+    }
+    
+    </script>
 
 </body>
 </html>
