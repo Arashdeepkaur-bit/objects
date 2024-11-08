@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yearly Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        label {
+            font-size: 18px;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+        select:hover {
+            border-color: #3498db;
+        }
+        .calendar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .month {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            padding: 15px;
+            width: 200px;
+            transition: transform 0.3s;
+        }
+        .month:hover {
+            transform: scale(1.05);
+        }
+        h3 {
+            color: #3498db;
+            margin: 0;
+            padding: 10px 0;
+        }
+        .days {
+            display: flex;
+            grid-template-columns: repeat(7, 1fr);
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .days span {
+            padding: 5px;
+            text-align: center;
+        }
+        .days span:nth-child(7n+1) {
+            color: red; /* Sundays */
+        }
+        .days span:nth-child(7n) {
+            color: blue; /* Saturdays */
+        }
+        .empty {
+            background-color: #eaeaea;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Yearly Calendar</h1>
+<label for="year">Select a Year: </label>
+<select id="year" onchange="generateCalendar()">
+    <!-- Year options will be added dynamically -->
+</select>
+
+<div id="calendar" class="calendar"></div>
+
+<script>
+    // Function to generate year options
+    function populateYearDropdown() {
+        const yearDropdown = document.getElementById('year');
+        const currentYear = new Date().getFullYear();
+        
+        for (let year = currentYear - 50; year <= currentYear + 50; year++) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearDropdown.appendChild(option);
+        }
+        yearDropdown.value = currentYear; // Set current year as default
+        generateCalendar(); // Generate calendar for the current year
+    }
+
+    // Function to generate the calendar for the selected year
+    function generateCalendar() {
+        const year = document.getElementById('year').value;
+        const calendarDiv = document.getElementById('calendar');
+        calendarDiv.innerHTML = ''; // Clear previous calendar
+
+        for (let month = 0; month < 12; month++) {
+            const monthDiv = document.createElement('div');
+            monthDiv.classList.add('month');
+            monthDiv.innerHTML = `<h3>${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}</h3>`;
+            monthDiv.innerHTML += '<div class="days">Sun Mon Tue Wed Thu Fri Sat</div>';
+
+            // Create days for the month
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            let weekRow = '';
+            for (let i = 0; i < firstDay; i++) {
+                weekRow += '<span class="empty"></span>'; // Empty spaces before the first day
+            }
+            for (let day = 1; day <= daysInMonth; day++) {
+                weekRow += `<span>${day}</span>`;
+                if ((day + firstDay) % 7 === 0) {
+                    monthDiv.innerHTML += `<div class="days">${weekRow}</div>`;
+                    weekRow = ''; // Reset for the next week
+                }
+            }
+            if (weekRow) {
+                monthDiv.innerHTML += `<div class="days">${weekRow}</div>`; // Add remaining days
+            }
+
+            calendarDiv.appendChild(monthDiv);
+        }
+    }
+
+    // Populate the dropdown on page load
+    window.onload = populateYearDropdown;
+</script>
+
+</body>
+</html>
