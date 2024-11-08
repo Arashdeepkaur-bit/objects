@@ -8,6 +8,8 @@
 </head>
 <body>
     <button onclick="arash()">Click</button>
+    <button  onclick="update()" id="aa" >btn</button>
+    <div id="arsh"></div>
     <p id="table"></p>
     
     <script>
@@ -50,8 +52,8 @@
 
     function update() {
         let d = "<table> <tr><th>ID</th><th>Name</th><th>UserID</th><th>Ingredients</th><th>PrepTimeMinutes</th><th>Review</th><th>Rating</th><th>Image</th><th>Remove</th></tr>";
-            
-        for (let x = 0; x < cart.length; x++) {
+        cart.length==0?d="":arsh.innerHTML=d;
+              for (let x = 0; x < cart.length; x++) {
             d += "<tr>" +
                 "<td>" + cart[x].id + "</td>" +
                 "<td>" + cart[x].name + "</td>" +
@@ -64,7 +66,6 @@
                 "<td><button onclick='remove(" + x + ")'>Remove</button></td>" +
                 "</tr>";
         }
-        
         d += "</table>";
         document.getElementById("arsh").innerHTML = d;
     }
@@ -74,7 +75,7 @@
     }
 
     </script>
-     <button onclick="update()">btn</button>
-    <div id="arsh"></div>
+     
+   
 </body>
 </html>

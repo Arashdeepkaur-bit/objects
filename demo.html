@@ -62,10 +62,10 @@
             text-align: center;
         }
         .days span:nth-child(7n+1) {
-            color: red; /* Sundays */
+            color: red; 
         }
         .days span:nth-child(7n) {
-            color: blue; /* Saturdays */
+            color: blue; 
         }
         .empty {
             background-color: #eaeaea;
@@ -73,21 +73,15 @@
     </style>
 </head>
 <body>
-
 <h1>Yearly Calendar</h1>
 <label for="year">Select a Year: </label>
 <select id="year" onchange="generateCalendar()">
-    
 </select>
-
 <div id="calendar" class="calendar"></div>
-
 <script>
-
     function populateYearDropdown() {
-        const yearDropdown = document.getElementById('year');
+    const yearDropdown = document.getElementById('year');
         const currentYear = new Date().getFullYear();
-        
         for (let year = currentYear - 50; year <= currentYear + 50; year++) {
             const option = document.createElement('option');
             option.value = year;
@@ -97,12 +91,10 @@
         yearDropdown.value = currentYear; 
         generateCalendar(); 
     }
-
     function generateCalendar() {
         const year = document.getElementById('year').value;
         const calendarDiv = document.getElementById('calendar');
         calendarDiv.innerHTML = ''; 
-
         for (let month = 0; month < 12; month++) {
             const monthDiv = document.createElement('div');
             monthDiv.classList.add('month');
@@ -110,7 +102,6 @@
             monthDiv.innerHTML += '<div class="days">S M T W T F S</div>';
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
-
             let weekRow = '';
             for (let i = 0; i < firstDay; i++) {
                 weekRow += '<span class="empty"></span>'; 
@@ -125,13 +116,10 @@
             if (weekRow) {
                 monthDiv.innerHTML += `<div class="days">${weekRow}</div>`;
             }
-
             calendarDiv.appendChild(monthDiv);
         }
     }
-
     window.onload = populateYearDropdown;
 </script>
-
 </body>
 </html>
