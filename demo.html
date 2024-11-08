@@ -77,13 +77,13 @@
 <h1>Yearly Calendar</h1>
 <label for="year">Select a Year: </label>
 <select id="year" onchange="generateCalendar()">
-    <!-- Year options will be added dynamically -->
+    
 </select>
 
 <div id="calendar" class="calendar"></div>
 
 <script>
-    // Function to generate year options
+
     function populateYearDropdown() {
         const yearDropdown = document.getElementById('year');
         const currentYear = new Date().getFullYear();
@@ -94,46 +94,42 @@
             option.textContent = year;
             yearDropdown.appendChild(option);
         }
-        yearDropdown.value = currentYear; // Set current year as default
-        generateCalendar(); // Generate calendar for the current year
+        yearDropdown.value = currentYear; 
+        generateCalendar(); 
     }
 
-    // Function to generate the calendar for the selected year
     function generateCalendar() {
         const year = document.getElementById('year').value;
         const calendarDiv = document.getElementById('calendar');
-        calendarDiv.innerHTML = ''; // Clear previous calendar
+        calendarDiv.innerHTML = ''; 
 
         for (let month = 0; month < 12; month++) {
             const monthDiv = document.createElement('div');
             monthDiv.classList.add('month');
             monthDiv.innerHTML = `<h3>${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}</h3>`;
             monthDiv.innerHTML += '<div class="days">S M T W T F S</div>';
-
-            // Create days for the month
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
 
             let weekRow = '';
             for (let i = 0; i < firstDay; i++) {
-                weekRow += '<span class="empty"></span>'; // Empty spaces before the first day
+                weekRow += '<span class="empty"></span>'; 
             }
             for (let day = 1; day <= daysInMonth; day++) {
                 weekRow += `<span>${day}</span>`;
                 if ((day + firstDay) % 7 === 0) {
                     monthDiv.innerHTML += `<div class="days">${weekRow}</div>`;
-                    weekRow = ''; // Reset for the next week
+                    weekRow = ''; 
                 }
             }
             if (weekRow) {
-                monthDiv.innerHTML += `<div class="days">${weekRow}</div>`; // Add remaining days
+                monthDiv.innerHTML += `<div class="days">${weekRow}</div>`;
             }
 
             calendarDiv.appendChild(monthDiv);
         }
     }
 
-    // Populate the dropdown on page load
     window.onload = populateYearDropdown;
 </script>
 
