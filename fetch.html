@@ -8,7 +8,6 @@
 </head>
 <body>
     <button onclick="arash()">Click</button>
-    <div id="arsh"></div>
     <p id="table"></p>
     
     <script>
@@ -35,6 +34,7 @@
             }
             r += "</table>";
             document.getElementById("table").innerHTML = r;
+    
         });
     }
     function addToCart(value) {
@@ -44,7 +44,7 @@
     
             let p = data.recipes[value];
             cart.push(p);
-            update();
+    
         });
     }
 
@@ -76,5 +76,7 @@
     
     
     </script>
+     <button onclick="update()">btn</button>
+    <div id="arsh"></div>
 </body>
 </html>

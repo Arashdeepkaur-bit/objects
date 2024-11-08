@@ -108,7 +108,7 @@
             const monthDiv = document.createElement('div');
             monthDiv.classList.add('month');
             monthDiv.innerHTML = `<h3>${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}</h3>`;
-            monthDiv.innerHTML += '<div class="days">Sun Mon Tue Wed Thu Fri Sat</div>';
+            monthDiv.innerHTML += '<div class="days">S M T W T F S</div>';
 
             // Create days for the month
             const firstDay = new Date(year, month, 1).getDay();
