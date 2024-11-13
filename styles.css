@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  select {
+    margin-bottom: 20px;
+  }
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .month {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  .month h2 {
+    margin-bottom: 10px;
+  }
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  .day {
+    padding: 5px;
+    text-align: center;
+  }
+  .day-name {
+    font-weight: bold;
+  }
