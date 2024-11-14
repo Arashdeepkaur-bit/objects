@@ -21,7 +21,6 @@ let c = '';
 for (let i = 0; i < dd.length; i++) {
   c += `<div class="day day-name">${dd[i]}</div>`;
 }
-
 for (let i = 0; i < b; i++) {
   c += '<div class="day"></div>';
 }
